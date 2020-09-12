@@ -1,0 +1,27 @@
+LAB: Google Cloud Fundamentals: Use Cloud Marketplace to deploy LAMP stack on a Compute Engine instance.
+
+Objectives:
+In this lab, you will learn how to use Cloud Launcher to deloy Lamp stack on a comute Engine instance in the Google Cloud Platform (GCP).
+
+Steps:
+1.Navigation menu (Navigation menu), click Marketplace
+  In the search bar, type LAMP
+  In the search results, click LAMP Certified by Bitnami
+  Click, Launch on Compute Engine.
+	name lamstack-1 --zone us-central-f  --machine-type “f1-micro(1 vCPU, 614MB memory)” --boot disk “standard persistent”  --boot disk size "10GB" --subnet “default” --tags http
+	gcloud firewall -rules create allow http –action=ALLOW -destination=INGRESS 
+    Click, Deploy.
+  Result: Lampstack-1 has been deployed.
+  Visit the website's temporary webpage.
+  
+2.Verify your deployment
+  On the GCP Console, under Get started with LAMP Certified by Bitnami, click SSH.
+
+  In the just-created SSH window, to change the current working directory:
+	cd /opt/bitnami
+  To copy the phpinfo.php script from the installation directory to a publicly accessible location under the web server document root:
+	sudo sh -c 'echo "<?php phpinfo(); ?>" > apache2/htdocs/phpinfo.php'
+	
+  Type the following URL, and replace SITE_ADDRESS with the URL in the Site address field in the right pane of the lampstack page.
+	http://SITE_ADDRESS/phpinfo.php
+  Confirm that the Php testpage is visible.
